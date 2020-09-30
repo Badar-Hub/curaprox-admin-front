@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <div class="products-container">
-      <CreateProduct />
+      <CreateProduct @toggle-create="showCreateModal = !showCreateModal"/>
+      <ProductModal v-if="showCreateModal" @toggle="showCreateModal = !showCreateModal" />
       <Product v-for="prod in products" :key="prod.id" v-bind="prod"/>
     </div>
   </div>
@@ -11,16 +12,20 @@
 import axios from 'axios'
 import Product from './components/Product'
 import CreateProduct from './components/CreateProduct'
+import ProductModal from './components/ProductModal'
+
 export default {
   name: 'App',
   data() {
     return { 
-      products: []
+      products: [],
+      showCreateModal: false,
     }
   },
   components: {
     Product,
-    CreateProduct
+    CreateProduct,
+    ProductModal
   },
   mounted(){
     axios.get('/api/products').then((res) => {
@@ -38,7 +43,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 
 .products-container{
@@ -47,5 +51,7 @@ export default {
   flex-wrap: wrap;
   gap: 30px;
   transition: .2s;
+height: 100%;
+  margin-top: 60px;
 }
 </style>

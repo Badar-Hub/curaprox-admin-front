@@ -9,8 +9,10 @@
     "build:final": "npm run build && mv ./dist ./dist-back && rm -r ../curaprox-back/dist-back && mv ./dist-back ../curaprox-back"
   },
   "dependencies": {
+    "ant-design-vue": "^1.6.5",
     "axios": "^0.20.0",
     "core-js": "^3.6.5",
+    "lodash": "^4.17.20",
     "vue": "^2.6.11"
   },
   "devDependencies": {

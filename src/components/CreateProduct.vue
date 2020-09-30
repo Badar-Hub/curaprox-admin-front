@@ -1,7 +1,9 @@
 <template>
-  <div id="container">
-      <i class="fa fa-plus add-icon"></i>
-  </div>
+    <div>
+        <div id="container" @click="$emit('toggle-create')">
+            <i class="fa fa-plus add-icon"></i>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -9,13 +11,13 @@ export default {
     data()
     {
         return{
-            showDialog: false,
         }
     }
 }
 </script>
 
 <style lang="scss" scoped>
+
 .add-icon{
     transition: .2s;
     font-size: 125px;
