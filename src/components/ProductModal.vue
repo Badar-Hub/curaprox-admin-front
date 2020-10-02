@@ -1,34 +1,40 @@
 <template>
-    <div class="modal" @click="$emit('toggle')">
-        <div class="modal-container" @click.stop="">
-            
-        </div>
+  <div class="modal" @click="$emit('toggle')">
+    <div class="modal-container" @click.stop>
+      <addProduct />
     </div>
+  </div>
 </template>
 
 <script>
+import AddProduct from "./AddProduct";
 export default {
-    
-}
+  components: {
+    AddProduct,
+  },
+};
 </script>
 
 <style lang="scss">
-.modal{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    &-container{
-        background-color: rgb(158, 158, 158);
-        width: 600px;
-        height: 500px;
-        margin: auto;
+.modal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  &-container {
+    background-color: rgb(158, 158, 158);
+    width: 1200px;
+    height: 500px;
+    margin: auto;
 
-        box-shadow: 0px 0px 15px -6px rgb(80, 80, 80);
-        -webkit-box-shadow: 0px 0px 15px -6px rgba(80, 80, 80, 1);
-        -moz-box-shadow: 0px 0px 15px -6px rgba(80, 80, 80, 1);
-    }
-    background-color: rgba(0, 0, 0, 0.486);
-    top: 0; left: 0; bottom: 0; right: 0;
+    box-shadow: 0px 0px 15px -6px rgb(80, 80, 80);
+    -webkit-box-shadow: 0px 0px 15px -6px rgba(80, 80, 80, 1);
+    -moz-box-shadow: 0px 0px 15px -6px rgba(80, 80, 80, 1);
+  }
+  background-color: rgba(0, 0, 0, 0.486);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
 </style>

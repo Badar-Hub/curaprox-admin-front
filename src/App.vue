@@ -1,39 +1,82 @@
 <template>
   <div id="app">
     <div class="products-container">
-      <CreateProduct @toggle-create="showCreateModal = !showCreateModal"/>
+      <CreateProduct @toggle-create="showCreateModal = !showCreateModal" />
       <ProductModal v-if="showCreateModal" @toggle="showCreateModal = !showCreateModal" />
-      <Product v-for="prod in products" :key="prod.id" v-bind="prod"/>
+      <Product v-for="prod in products" :key="prod.id" v-bind="prod" />
     </div>
+    <a-table :columns="columns" :data-source="products">
+      <a slot="name" slot-scope="text">{{ text }}</a>
+    </a-table>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
-import Product from './components/Product'
-import CreateProduct from './components/CreateProduct'
-import ProductModal from './components/ProductModal'
+const columns = [
+  {
+    title: "Name",
+    dataIndex: "name",
+    key: "name",
+    scopedSlots: { customRender: "name" },
+  },
+  {
+    title: "Sku",
+    dataIndex: "sku",
+    key: "sku",
+    width: 80,
+  },
+  {
+    title: "Price",
+    dataIndex: "price",
+    key: "price",
+    ellipsis: true,
+  },
+  {
+    title: "Description",
+    dataIndex: "description",
+    key: "description",
+    ellipsis: true,
+  },
+  {
+    title: "Qty",
+    dataIndex: "qty",
+    key: "qty",
+    ellipsis: true,
+  },
+  // {
+  //   title: "Long Column",
+  //   dataIndex: "address",
+  //   key: "address 4",
+  //   ellipsis: true,
+  // },
+];
+
+import axios from "axios";
+import Product from "./components/Product";
+import CreateProduct from "./components/CreateProduct";
+import ProductModal from "./components/ProductModal";
 
 export default {
-  name: 'App',
+  name: "App",
   data() {
-    return { 
+    return {
       products: [],
       showCreateModal: false,
-    }
+      columns,
+    };
   },
   components: {
     Product,
     CreateProduct,
-    ProductModal
+    ProductModal,
   },
-  mounted(){
-    axios.get('/api/products').then((res) => {
-        this.products = res.data
-        console.log(this.products);
-    })
-  }
-}
+  mounted() {
+    axios.get("/api/products").then((res) => {
+      this.products = res.data;
+      console.log(this.products);
+    });
+  },
+};
 </script>
 
 <style lang="scss">
@@ -45,13 +88,13 @@ export default {
   color: #2c3e50;
 }
 
-.products-container{
+.products-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 30px;
-  transition: .2s;
-height: 100%;
+  transition: 0.2s;
+  height: 100%;
   margin-top: 60px;
 }
 </style>
