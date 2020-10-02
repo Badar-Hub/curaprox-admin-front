@@ -5,7 +5,7 @@
       <ProductModal v-if="showCreateModal" @toggle="showCreateModal = !showCreateModal" />
       <Product v-for="prod in products" :key="prod.id" v-bind="prod" />
     </div>
-    <a-table :columns="columns" :data-source="products">
+    <a-table v-if="false" :columns="columns" :data-source="products">
       <a slot="name" slot-scope="text">{{ text }}</a>
     </a-table>
   </div>
