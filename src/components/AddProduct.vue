@@ -21,15 +21,19 @@
             <option value="opt2">Toothpaste</option>
           </select>
         </h2>
-        <h2>
+        <!-- <h2>
           Short Description:
           <input type="text" placeholder="Example: Ultra Soft Toothbrush" />
-        </h2>
+        </h2>-->
         <h2>
-          Long Description:
-          <input type="text" placeholder="Example: Ultra Soft Toothbrush" />
+          Description:
+          <input
+            type="text"
+            placeholder="Example: Ultra Soft Toothbrush"
+            v-model="description"
+          />
         </h2>
-        <button style="width:200px;">Add New Product</button>
+        <button @click="CreateProduct" style="width:200px;">Add New Product</button>
       </div>
       <div class="img">
         <input type="file" @change="onFileSelected" />
@@ -39,6 +43,8 @@
 </template>
 
 <script>
+import axios from "axios";
+// let formData = new FormData;
 export default {
   data() {
     return {
@@ -76,6 +82,24 @@ export default {
   methods: {
     onFileSelected(event) {
       this.selectedFile = event.target.files[0];
+    },
+    CreateProduct() {
+      let body = {
+        name: this.name,
+        price: this.price,
+        qty: this.qty,
+        sku: this.sku,
+        description: this.description,
+      };
+      let data = new FormData();
+      for (let key in body) {
+        data.append(key, body[key]);
+      }
+      data.append("file", this.selectedFile);
+      console.log(data);
+      axios.post("/api/product", data).then((res) => {
+        console.log(res);
+      });
     },
   },
 };
