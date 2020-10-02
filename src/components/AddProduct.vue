@@ -99,8 +99,10 @@ export default {
       console.log(data);
       axios.post("/api/product", data).then((res) => {
         console.log(res);
+        this.$emit("product-created");
       });
     },
+    hide() {},
   },
 };
 </script>
