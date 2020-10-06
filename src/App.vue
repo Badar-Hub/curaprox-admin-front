@@ -2,8 +2,17 @@
   <div id="app">
     <div class="products-container">
       <CreateProduct @toggle-create="showCreateModal = !showCreateModal" />
-      <ProductModal v-if="showCreateModal" @toggle="showCreateModal = !showCreateModal" />
-      <Product v-for="prod in products" :key="prod.id" v-bind="prod" />
+      <ProductModal
+        :product="selectedProduct"
+        v-if="showCreateModal"
+        @toggle="showCreateModal = !showCreateModal"
+      />
+      <Product
+        @toggle-create="selectedProduct"
+        v-for="prod in products"
+        :key="prod._id"
+        v-bind="prod"
+      />
     </div>
     <a-table v-if="false" :columns="columns" :data-source="products">
       <a slot="name" slot-scope="text">{{ text }}</a>
@@ -62,6 +71,7 @@ export default {
     return {
       products: [],
       showCreateModal: false,
+      selectedProduct: null,
       columns,
     };
   },
@@ -75,6 +85,14 @@ export default {
       this.products = res.data;
       console.log(this.products);
     });
+  },
+  methods: {
+    selectProduct(id) {
+      {
+        this.selectProduct = this.products.find((x) => x._id == id);
+        this.showCreateModal = !this.showCreateModal;
+      }
+    },
   },
 };
 </script>

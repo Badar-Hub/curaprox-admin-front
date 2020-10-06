@@ -4,15 +4,15 @@
       <div class="text">
         <h2>
           Name:
-          <input type="text" v-model="name" />
+          <input type="text" v-model="product.name" />
         </h2>
         <h2>
           Price:
-          <input type="text" v-model="price" />
+          <input type="text" v-model="product.price" />
         </h2>
         <h2>
           Sku:
-          <input type="text" v-model="sku" />
+          <input type="text" v-model="product.sku" />
         </h2>
         <h2>
           Category:
@@ -30,7 +30,7 @@
           <input
             type="text"
             placeholder="Example: Ultra Soft Toothbrush"
-            v-model="description"
+            v-model="product.desc"
           />
         </h2>
         <button @click="CreateProduct" style="width:200px;">Add New Product</button>
@@ -53,31 +53,32 @@ export default {
   },
   components: {},
   props: {
-    sku: {
-      type: String,
-      required: false,
-      default: () => "SK1",
-    },
-    name: {
-      type: String,
-      required: false,
-      default: () => "Product 1",
-    },
-    price: {
-      type: Number,
-      required: false,
-      default: () => 650,
-    },
-    qty: {
-      type: Number,
-      required: false,
-      default: () => 1000,
-    },
-    description: {
-      type: String,
-      required: false,
-      default: () => "Product One",
-    },
+    // sku: {
+    //   type: String,
+    //   required: false,
+    //   default: () => "SK1",
+    // },
+    // name: {
+    //   type: String,
+    //   required: false,
+    //   default: () => "Product 1",
+    // },
+    // price: {
+    //   type: Number,
+    //   required: false,
+    //   default: () => 650,
+    // },
+    // qty: {
+    //   type: Number,
+    //   required: false,
+    //   default: () => 1000,
+    // },
+    // description: {
+    //   type: String,
+    //   required: false,
+    //   default: () => "Product One",
+    // },
+    product: null,
   },
   methods: {
     onFileSelected(event) {

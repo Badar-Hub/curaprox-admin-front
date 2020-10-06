@@ -1,7 +1,7 @@
 <template>
   <div class="modal" @click="$emit('toggle')">
     <div class="modal-container" @click.stop>
-      <addProduct @click="$emit('product-created')" />
+      <addProduct :product="product" @product-created="$emit('toggle')" />
     </div>
   </div>
 </template>
@@ -9,6 +9,9 @@
 <script>
 import AddProduct from "./AddProduct";
 export default {
+  props: {
+    product: null,
+  },
   components: {
     AddProduct,
   },

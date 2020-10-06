@@ -1,5 +1,5 @@
 <template>
-  <div id="container">
+  <div id="container" @click="$emit('toggle-create', _id)">
     <div class="img-container">
       <img :src="`${img}`" />
     </div>
@@ -31,6 +31,10 @@
 <script>
 export default {
   props: {
+    _id: {
+      type: String,
+      required: true,
+    },
     sku: {
       type: String,
       required: true,
