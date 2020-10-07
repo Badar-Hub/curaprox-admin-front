@@ -78,7 +78,13 @@ export default {
     //   required: false,
     //   default: () => "Product One",
     // },
-    product: {},
+    product: {
+      type: Object,
+      required: false,
+      default: () => {
+        return { name: "" };
+      },
+    },
   },
   methods: {
     onFileSelected(event) {

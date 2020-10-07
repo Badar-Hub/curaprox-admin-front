@@ -10,7 +10,13 @@
 import AddProduct from "./AddProduct";
 export default {
   props: {
-    product: null,
+    product: {
+      type: Object,
+      required: false,
+      default: () => {
+        return { name: "" };
+      },
+    },
   },
   components: {
     AddProduct,

@@ -71,7 +71,13 @@ export default {
     return {
       products: [],
       showCreateModal: false,
-      selectedProduct: null,
+      selectedProduct: {
+        type: Object,
+        required: false,
+        default: () => {
+          return { name: "" };
+        },
+      },
       columns,
     };
   },
