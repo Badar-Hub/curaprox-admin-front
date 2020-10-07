@@ -30,7 +30,7 @@
           <input
             type="text"
             placeholder="Example: Ultra Soft Toothbrush"
-            v-model="product.desc"
+            v-model="product.description"
           />
         </h2>
         <button @click="CreateProduct" style="width:200px;">Add New Product</button>
