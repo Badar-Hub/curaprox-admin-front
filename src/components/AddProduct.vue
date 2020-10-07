@@ -78,7 +78,7 @@ export default {
     //   required: false,
     //   default: () => "Product One",
     // },
-    product: null,
+    product: {},
   },
   methods: {
     onFileSelected(event) {
