@@ -92,18 +92,14 @@ export default {
     },
     CreateProduct() {
       let body = {
-        name: this.name,
-        price: this.price,
-        qty: this.qty,
-        sku: this.sku,
-        description: this.description,
+        ...this.product,
       };
       let data = new FormData();
       for (let key in body) {
         data.append(key, body[key]);
       }
       data.append("file", this.selectedFile);
-      console.log(data);
+      console.log(body);
       axios.post("/api/product", data).then((res) => {
         console.log(res);
         this.$emit("product-created");
