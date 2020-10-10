@@ -15,10 +15,17 @@
           <input type="text" v-model="product.sku" />
         </h2>
         <h2>
+          Qty:
+          <input type="text" v-model="product.qty" />
+        </h2>
+        <h2>
           Category:
-          <select>
-            <option value="opt1">Toothbrush</option>
-            <option value="opt2">Toothpaste</option>
+          <select v-model="category">
+            <option
+              v-for="category in categories"
+              :key="category._id"
+              :value="category._id"
+            >{{category.title}}</option>
           </select>
         </h2>
         <!-- <h2>
@@ -49,41 +56,14 @@ export default {
   data() {
     return {
       selectedFile: null,
+      categories: [],
+      category: "",
     };
   },
   components: {},
   props: {
-    // sku: {
-    //   type: String,
-    //   required: false,
-    //   default: () => "SK1",
-    // },
-    // name: {
-    //   type: String,
-    //   required: false,
-    //   default: () => "Product 1",
-    // },
-    // price: {
-    //   type: Number,
-    //   required: false,
-    //   default: () => 650,
-    // },
-    // qty: {
-    //   type: Number,
-    //   required: false,
-    //   default: () => 1000,
-    // },
-    // description: {
-    //   type: String,
-    //   required: false,
-    //   default: () => "Product One",
-    // },
     product: {
       type: Object,
-      required: false,
-      default: () => {
-        return { name: "" };
-      },
     },
   },
   methods: {
@@ -93,6 +73,7 @@ export default {
     CreateProduct() {
       let body = {
         ...this.product,
+        category_id: this.category,
       };
       let data = new FormData();
       for (let key in body) {
@@ -106,6 +87,12 @@ export default {
       });
     },
     hide() {},
+  },
+  mounted() {
+    axios.get("/api/categories").then((res) => {
+      this.categories = res.data;
+      console.log(this.categories);
+    });
   },
 };
 </script>
