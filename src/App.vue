@@ -1,18 +1,15 @@
 <template>
   <div id="app">
     <div class="products-container">
-      <CreateProduct @toggle-create="showCreateModal = !showCreateModal" />
+      <CreateProduct
+        @toggle-create="selectedProduct={}; showCreateModal = !showCreateModal; if($event) { getAllProds() }"
+      />
       <ProductModal
         :product="selectedProduct"
         v-if="showCreateModal"
-        @toggle="showCreateModal = !showCreateModal"
+        @toggle="showCreateModal = !showCreateModal; if($event) {getAllProds()}"
       />
-      <Product
-        @toggle-create="selectedProduct"
-        v-for="prod in products"
-        :key="prod._id"
-        v-bind="prod"
-      />
+      <Product @toggle-create="openEdit" v-for="prod in products" :key="prod._id" v-bind="prod" />
     </div>
     <a-table v-if="false" :columns="columns" :data-source="products">
       <a slot="name" slot-scope="text">{{ text }}</a>
@@ -71,13 +68,7 @@ export default {
     return {
       products: [],
       showCreateModal: false,
-      selectedProduct: {
-        type: Object,
-        required: false,
-        default: () => {
-          return { name: "" };
-        },
-      },
+      selectedProduct: {},
       columns,
     };
   },
@@ -87,12 +78,21 @@ export default {
     ProductModal,
   },
   mounted() {
-    axios.get("/api/products").then((res) => {
-      this.products = res.data;
-      console.log(this.products);
-    });
+    this.getAllProds();
   },
   methods: {
+    getAllProds() {
+      this.products = [];
+      axios.get("/api/products").then((res) => {
+        this.products = res.data;
+        console.log(this.products);
+      });
+    },
+    openEdit(id) {
+      this.showCreateModal = true;
+      this.selectedProduct = this.products.find((x) => x._id === id);
+    },
+
     selectProduct(id) {
       {
         this.selectProduct = this.products.find((x) => x._id == id);

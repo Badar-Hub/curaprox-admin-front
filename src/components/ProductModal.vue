@@ -1,7 +1,7 @@
 <template>
   <div class="modal" @click="$emit('toggle')">
     <div class="modal-container" @click.stop>
-      <addProduct :product="product" @product-created="$emit('toggle')" />
+      <addProduct :product="product" @product-submitted="$emit('toggle', true)" />
     </div>
   </div>
 </template>

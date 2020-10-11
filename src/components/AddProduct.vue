@@ -40,7 +40,11 @@
             v-model="product.description"
           />
         </h2>
-        <button @click="CreateProduct" style="width:200px;">Add New Product</button>
+        <button
+          @click="SubmitProduct"
+          style="width:200px;"
+        >{{!product._id ? `Add New Product` : "Update Product"}}</button>
+        <button v-if="product._id" @click="deleteProduct" style="width:200px;">Delete Product</button>
       </div>
       <div class="img">
         <input type="file" @change="onFileSelected" />
@@ -67,10 +71,16 @@ export default {
     },
   },
   methods: {
+    deleteProduct() {
+      axios.delete("/api/product/" + this.product._id).then((res) => {
+        console.log(res);
+        this.$emit("product-submitted");
+      });
+    },
     onFileSelected(event) {
       this.selectedFile = event.target.files[0];
     },
-    CreateProduct() {
+    SubmitProduct() {
       let body = {
         ...this.product,
         category_id: this.category,
@@ -81,10 +91,17 @@ export default {
       }
       data.append("file", this.selectedFile);
       console.log(body);
-      axios.post("/api/product", data).then((res) => {
-        console.log(res);
-        this.$emit("product-created");
-      });
+      if (!this.product._id) {
+        axios.post("/api/product", data).then((res) => {
+          console.log(res);
+          this.$emit("product-submitted");
+        });
+      } else {
+        axios.put("/api/product/" + this.product._id, data).then((res) => {
+          console.log(res);
+          this.$emit("product-submitted");
+        });
+      }
     },
     hide() {},
   },

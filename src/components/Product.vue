@@ -24,10 +24,6 @@
         <h3>Category:</h3>
         <input type="text" v-model="category" :readonly="!editing" />
       </div>
-      <div class="content-detail">
-        <h3>Description:</h3>
-        <textarea type="text" v-model="description" :readonly="!editing"></textarea>
-      </div>
     </div>
   </div>
 </template>
