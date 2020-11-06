@@ -32,14 +32,15 @@
           Short Description:
           <input type="text" placeholder="Example: Ultra Soft Toothbrush" />
         </h2>-->
-        <h2>
+        <!-- <h2>
           Description:
           <input
             type="text"
             placeholder="Example: Ultra Soft Toothbrush"
             v-model="product.description"
           />
-        </h2>
+        </h2>-->
+
         <button
           @click="SubmitProduct"
           style="width:200px;"
@@ -48,6 +49,12 @@
       </div>
       <div class="img">
         <input type="file" @change="onFileSelected" />
+        <br />
+        <br />
+        <br />
+        <h1>Description:</h1>
+        <!-- <input type="text" v-model="product.description" /> -->
+        <Editor height="400" width="200" v-model="product.description"></Editor>
       </div>
     </div>
   </div>
@@ -55,6 +62,7 @@
 
 <script>
 import axios from "axios";
+import Editor from "../components/rickEditor";
 // let formData = new FormData;
 export default {
   data() {
@@ -64,7 +72,9 @@ export default {
       category: "",
     };
   },
-  components: {},
+  components: {
+    Editor,
+  },
   props: {
     product: {
       type: Object,

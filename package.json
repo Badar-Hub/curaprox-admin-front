@@ -9,15 +9,24 @@
     "build:final": "npm run build && mv ./dist ./dist-back && rm -r ../curaprox-back/dist-back && mv ./dist-back ../curaprox-back"
   },
   "dependencies": {
+    "@baoshishu/vue-editor": "^0.3.0",
+    "@ckeditor/ckeditor5-build-classic": "^23.1.0",
+    "@ckeditor/ckeditor5-vue": "^1.0.3",
+    "@syncfusion/ej2-vue-richtexteditor": "^18.3.44",
     "ant-design-vue": "^1.6.5",
     "axios": "^0.20.0",
     "core-js": "^3.6.5",
-    "lodash": "^4.17.20",
-    "vue": "^2.6.11",
     "filepond": "^4.2.0",
     "filepond-plugin-file-validate-type": "^1.2.2",
     "filepond-plugin-image-preview": "^4.0.3",
-    "vue-filepond": "^5.0.0"
+    "lodash": "^4.17.20",
+    "prosemirror-utils": "^0.9.6",
+    "tiptap": "^1.30.0",
+    "tiptap-extensions": "^1.33.2",
+    "v-tooltip": "^2.0.3",
+    "vue": "^2.6.11",
+    "vue-filepond": "^5.0.0",
+    "vue-material": "^1.0.0-beta-15"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
