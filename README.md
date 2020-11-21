@@ -1,4 +1,4 @@
-# curaprox-back-front
+# wetnwild-back-front
 
 ## Project setup
 ```

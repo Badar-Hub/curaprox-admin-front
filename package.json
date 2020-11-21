@@ -1,12 +1,12 @@
 {
-  "name": "curaprox-back-front",
+  "name": "wetnwild-back-front",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "build:final": "npm run build && mv ./dist ./dist-back && rm -r ../curaprox-back/dist-back && mv ./dist-back ../curaprox-back"
+    "build:final": "npm run build && mv ./dist ./dist-back && rm -r ../wetnwild-back/dist-back && mv ./dist-back ../wetnwild-back"
   },
   "dependencies": {
     "@baoshishu/vue-editor": "^0.3.0",
