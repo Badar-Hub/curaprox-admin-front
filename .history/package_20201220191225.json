@@ -12,6 +12,8 @@
     "@baoshishu/vue-editor": "^0.3.0",
     "@ckeditor/ckeditor5-build-classic": "^23.1.0",
     "@ckeditor/ckeditor5-vue": "^1.0.3",
+    "@syncfusion/ej2-vue-richtexteditor": "^18.3.44",
+    "ant-design-vue": "^1.6.5",
     "axios": "^0.20.0",
     "core-js": "^3.6.5",
     "filepond": "^4.2.0",
