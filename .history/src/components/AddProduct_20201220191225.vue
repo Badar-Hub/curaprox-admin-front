@@ -11,10 +11,6 @@
           <input type="text" v-model="product.price" />
         </h2>
         <h2>
-          Price:
-          <input type="text" v-model="product.discount" />
-        </h2>
-        <h2>
           Sku:
           <input type="text" v-model="product.sku" />
         </h2>

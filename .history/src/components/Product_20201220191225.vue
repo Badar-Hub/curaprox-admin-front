@@ -17,10 +17,6 @@
         <input type="text" v-model="price" :readonly="!editing" />
       </div>
       <div class="content-detail">
-        <h3>discount:</h3>
-        <input type="text" v-model="discount" :readonly="!editing" />
-      </div>
-      <div class="content-detail">
         <h3>Quantity:</h3>
         <input type="text" v-model="qty" :readonly="!editing" />
       </div>
@@ -57,11 +53,6 @@ export default {
       type: Number,
       required: true,
       default: () => 650,
-    },
-    discount: {
-      type: Number,
-      required: true,
-      default: () => 500,
     },
     qty: {
       type: Number,

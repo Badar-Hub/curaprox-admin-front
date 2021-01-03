@@ -87,7 +87,6 @@ export default {
   methods: {
     deleteProduct() {
       axios.delete("/api/product/" + this.product._id).then((res) => {
-        console.log(res);
         this.$emit("product-submitted");
       });
     },

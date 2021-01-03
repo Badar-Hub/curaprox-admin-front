@@ -87,7 +87,6 @@ export default {
   methods: {
     deleteProduct() {
       axios.delete("/api/product/" + this.product._id).then((res) => {
-        console.log(res);
         this.$emit("product-submitted");
       });
     },
@@ -107,7 +106,6 @@ export default {
       console.log(body);
       if (!this.product._id) {
         axios.post("/api/product", data).then((res) => {
-          console.log(res);
           this.$emit("product-submitted");
         });
       } else {
